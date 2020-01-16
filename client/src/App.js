@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import LandContract from "./contracts/Land.json";
 
 import Button from "@material-ui/core/Button";
+import { Grid } from "@material-ui/core";
 import getWeb3 from "./getWeb3";
 
 import "./App.css";
@@ -56,12 +57,26 @@ class App extends Component {
       return <div>Loading Web3, accounts, and contract...</div>;
     }
     return (
-      <div className="App">
-        Check console
+      <Grid
+        container
+        direction="row"
+        justify="space-evenly"
+        alignItems="center"
+      >
+        <Button variant="contained">Default</Button>
         <Button variant="contained" color="primary">
-          Hello World
+          Primary
         </Button>
-      </div>
+        <Button variant="contained" color="secondary">
+          Secondary
+        </Button>
+        <Button variant="contained" disabled>
+          Disabled
+        </Button>
+        <Button variant="contained" color="primary" href="#contained-buttons">
+          Link
+        </Button>
+      </Grid>
     );
   }
 }

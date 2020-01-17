@@ -78,7 +78,7 @@ export default function NavTabs() {
         >
           <LinkTab label="Add Record" href="#" {...a11yProps(0)} />
           <LinkTab label="Read Record" href="#" {...a11yProps(1)} />
-          <LinkTab label="Page Three" href="#" {...a11yProps(2)} />
+          <LinkTab label="Transfer Record" href="#" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>

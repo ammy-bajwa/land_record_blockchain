@@ -1,46 +1,61 @@
 import React from "react";
-import { Grid } from "@material-ui/core";
-import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
-import { makeStyles } from "@material-ui/core/styles";
+import {
+  Grid,
+  Snackbar,
+  TextField,
+  Button,
+  withStyles
+} from "@material-ui/core";
 
-const useStyles = makeStyles(theme => ({
+const styles = {
   root: {
     "& .MuiTextField-root": {
-      margin: theme.spacing(1),
+      margin: 10,
       width: 200
     }
   },
   submitButton: {
-    marginTop: theme.spacing(4)
+    marginTop: 15
   }
-}));
+};
 
-export default function FormPropsTextFields() {
-  const classes = useStyles();
-  return (
-    <form className={classes.root} noValidate autoComplete="off">
-      <Grid container direction="row" justify="center" alignItems="center">
-        <TextField id="standard-number" label="Plot Number" />
-        <TextField id="standard-number" label="Street Number" />
-        <TextField id="standard-number" label="City" />
-        <TextField id="standard-number" label="Province" />
-        <TextField id="standard-number" label="Country" />
-        <TextField id="standard-number" label="Witness One Id" />
-        <TextField id="standard-number" label="Witness Two Id" />
-        <TextField id="standard-number" label="Previous Owner Id" />
-      </Grid>
-      <Grid
-        container
-        direction="row"
-        justify="center"
-        alignItems="center"
-        className={classes.submitButton}
+class InputRecord extends React.Component {
+  handleForm = event => {
+    event.preventDefault();
+  };
+
+  render() {
+    const { classes } = this.props;
+    return (
+      <form
+        className={classes.root}
+        autoComplete="off"
+        onSubmit={this.handleForm}
       >
-        <Button type="submit" variant="contained" color="primary">
-          Submit
-        </Button>
-      </Grid>
-    </form>
-  );
+        <Grid container direction="row" justify="center" alignItems="center">
+          <TextField id="plot_num" required label="Plot Number" />
+          <TextField id="street_num" required label="Street Number" />
+          <TextField id="city" required label="City" />
+          <TextField id="province" required label="Province" />
+          <TextField id="country" required label="Country" />
+          <TextField id="wintness_1_id" required label="Witness One Id" />
+          <TextField id="wintness_2_id" required label="Witness Two Id" />
+          <TextField id="previous_owner" required label="Previous Owner Id" />
+        </Grid>
+        <Grid
+          container
+          direction="row"
+          justify="center"
+          alignItems="center"
+          className={classes.submitButton}
+        >
+          <Button type="submit" variant="contained" color="primary">
+            Submit
+          </Button>
+        </Grid>
+      </form>
+    );
+  }
 }
+
+export default withStyles(styles)(InputRecord);

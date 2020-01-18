@@ -19,6 +19,9 @@ const styles = {
   },
   resetContainer: {
     padding: "2em"
+  },
+  content: {
+    wordBreak: "break-all !important"
   }
 };
 
@@ -32,9 +35,7 @@ class TransactionView extends React.Component {
 
   render() {
     const steps = [
-      "Getting Transaction Hash",
-      "Getting Receipt",
-      "Getting Confirmation",
+      "Saving Data On Blockchain",
       "Successfully Added On blockchain"
     ];
     const { classes, stepCount, stepMessage } = this.props;
@@ -45,7 +46,7 @@ class TransactionView extends React.Component {
           {steps.map((label, index) => (
             <Step key={label}>
               <StepLabel>{label}</StepLabel>
-              <StepContent>
+              <StepContent className={classes.content}>
                 <Typography>{stepMessage}</Typography>
               </StepContent>
             </Step>

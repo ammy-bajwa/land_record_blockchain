@@ -9,7 +9,7 @@ import getWeb3 from "./getWeb3";
 import "./App.css";
 
 class App extends Component {
-  state = { storageValue: 0, web3: null, accounts: null, contract: null };
+  state = { storageValue: 0, web3: null, accounts: null, land_contract: null };
 
   componentDidMount = async () => {
     try {
@@ -58,7 +58,10 @@ class App extends Component {
     }
     return (
       <div>
-        <Tabs />
+        <Tabs
+          land_contract={this.state.land_contract}
+          account={this.state.accounts[0]}
+        />
       </div>
     );
   }

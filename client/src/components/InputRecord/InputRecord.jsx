@@ -45,38 +45,73 @@ class InputRecord extends React.Component {
   }
 
   handleForm = event => {
+    event.preventDefault();
+    const { land_contract, account } = this.props;
     const componentThis = this;
     let myCount = 0;
-    event.preventDefault();
+    const plot_num = document.querySelector("#plot_num").value;
+    const street_num = document.querySelector("#street_num").value;
+    const city = document.querySelector("#city").value;
+    const province = document.querySelector("#province").value;
+    const country = document.querySelector("#country").value;
+    const previous_owner = document.querySelector("#previous_owner").value;
+    const wintness_1_id = document.querySelector("#wintness_1_id").value;
+    const wintness_2_id = document.querySelector("#wintness_2_id").value;
     this.setState({
-      open: true,
-      message: "Data Added Successfully",
-      severity: "success",
-      transactionScreen: true
+      transactionScreen: true,
+      stepCount: myCount,
+      stepMessage: "Working..."
     });
-    const myStepper = setInterval(() => {
-      componentThis.setState({
-        stepCount: myCount,
-        stepMessage: `Message for ${myCount}`
+    const {
+      methods: { getLength, addLandRecode }
+    } = land_contract;
+    addLandRecode(
+      plot_num,
+      street_num,
+      city,
+      province,
+      country,
+      previous_owner,
+      wintness_1_id,
+      wintness_2_id
+    )
+      // .call({
+      //   from: account
+      // })
+      .send({ from: account })
+      .then(res => {
+        const { transactionHash } = res;
+        componentThis.setState({
+          open: true,
+          message: `Transaction Hash \n ${transactionHash}`,
+          severity: "success",
+          stepCount: myCount + 1,
+          stepMessage: "Done"
+        });
+        setTimeout(() => {
+          componentThis.screenReset();
+        }, 4000);
+      })
+      .catch(error => {
+        componentThis.setState({
+          transactionScreen: false,
+          open: true,
+          message: `Error Occured \n ${error.message}`,
+          severity: "error"
+        });
+        setTimeout(() => {
+          componentThis.screenReset();
+        }, 4000);
       });
-      myCount++;
-      if (myCount > 4) {
-        clearInterval(myStepper);
-      }
-    }, 3000);
-    // myContract.methods
-    //   .myMethod(123)
-    //   .send({ from: "0xde0B295669a9FD93d5F28D9Ec85E40f4cb697BAe" })
-    //   .on("transactionHash", function(hash) {
-    //     // ...
-    //   })
-    //   .on("receipt", function(receipt) {
-    //     // ...
-    //   })
-    //   .on("confirmation", function(confirmationNumber, receipt) {
-    //     // ...
-    //   })
-    //   .on("error", console.error);
+  };
+
+  screenReset = () => {
+    this.setState({
+      open: false,
+      stepCount: 0,
+      transactionScreen: false
+    });
+    document.querySelector("#add_record_form").reset();
   };
 
   render() {
@@ -94,6 +129,7 @@ class InputRecord extends React.Component {
         className={classes.root}
         autoComplete="off"
         onSubmit={this.handleForm}
+        id="add_record_form"
       >
         <Backdrop open={transactionScreen} className={classes.backdrop}>
           <TransactionView stepCount={stepCount} stepMessage={stepMessage} />
@@ -104,9 +140,24 @@ class InputRecord extends React.Component {
           <TextField id="city" required label="City" />
           <TextField id="province" required label="Province" />
           <TextField id="country" required label="Country" />
-          <TextField id="wintness_1_id" required label="Witness One Id" />
-          <TextField id="wintness_2_id" required label="Witness Two Id" />
-          <TextField id="previous_owner" required label="Previous Owner Id" />
+          <TextField
+            id="previous_owner"
+            type="number"
+            required
+            label="Previous Owner Id"
+          />
+          <TextField
+            id="wintness_1_id"
+            type="number"
+            required
+            label="Witness One Id"
+          />
+          <TextField
+            id="wintness_2_id"
+            type="number"
+            required
+            label="Witness Two Id"
+          />
         </Grid>
         <Grid
           container
@@ -119,7 +170,7 @@ class InputRecord extends React.Component {
             Submit
           </Button>
         </Grid>
-        <Snackbar open={open} autoHideDuration={5000}>
+        <Snackbar open={open}>
           <Alert severity={severity}>{message}</Alert>
         </Snackbar>
       </form>

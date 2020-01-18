@@ -59,7 +59,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function NavTabs() {
+export default function NavTabs(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -82,7 +82,10 @@ export default function NavTabs() {
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <InputRecord />
+        <InputRecord
+          land_contract={props.land_contract}
+          account={props.account}
+        />
       </TabPanel>
       <TabPanel value={value} index={1}>
         Read Land Record

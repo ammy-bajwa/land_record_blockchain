@@ -63,7 +63,7 @@ class InputRecord extends React.Component {
       stepMessage: "Working..."
     });
     const {
-      methods: { getLength, addLandRecode }
+      methods: { getLength, addLandRecode, landArr }
     } = land_contract;
     addLandRecode(
       plot_num,
@@ -80,6 +80,7 @@ class InputRecord extends React.Component {
       // })
       .send({ from: account })
       .then(res => {
+        console.log(res);
         const { transactionHash } = res;
         componentThis.setState({
           open: true,

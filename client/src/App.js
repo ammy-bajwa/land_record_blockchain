@@ -45,11 +45,13 @@ class App extends Component {
   runExample = async () => {
     const {
       land_contract: {
-        methods: { getLength }
+        methods: { getLength, landArr }
       }
     } = this.state;
     const arrIndex = await getLength().call();
-    console.log("should be zero ", arrIndex);
+    console.log("Arr index ", arrIndex);
+    console.log("data from arr ", await landArr(0).call());
+    
   };
 
   render() {

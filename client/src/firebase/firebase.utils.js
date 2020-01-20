@@ -15,3 +15,17 @@ export const addTransactionToFirestore = async (transactionHash, data) => {
     }
   });
 };
+
+export const getTransactionFromFirestore = async transactionHash => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const response = await fireStore
+        .collection("records")
+        .doc(`${transactionHash}`)
+        .get();
+      resolve(response.data());
+    } catch (error) {
+      reject(error);
+    }
+  });
+};

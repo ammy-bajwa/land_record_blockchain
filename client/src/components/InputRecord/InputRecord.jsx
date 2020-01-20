@@ -96,15 +96,16 @@ class InputRecord extends React.Component {
             from: account
           });
           await addTransactionToFirestore(transactionHash, {
-            ...res
+            ...res,
+            arrIndex
           });
         } catch (error) {
           console.error(error);
           this.showError(error.message);
-          setTimeout(() => {
-            componentThis.screenReset();
-          }, 4000);
         }
+        setTimeout(() => {
+          componentThis.screenReset();
+        }, 4000);
       })
       .catch(error => {
         this.showError(error.message);

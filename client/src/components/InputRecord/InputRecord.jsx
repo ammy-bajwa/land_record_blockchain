@@ -77,12 +77,8 @@ class InputRecord extends React.Component {
       wintness_1_id,
       wintness_2_id
     )
-      // .call({
-      //   from: account
-      // })
       .send({ from: account })
       .then(async res => {
-        console.log(res);
         const { transactionHash } = res;
         componentThis.setState({
           open: true,

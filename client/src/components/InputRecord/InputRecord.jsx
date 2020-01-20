@@ -11,6 +11,8 @@ import MuiAlert from "@material-ui/lab/Alert";
 
 import TransactionView from "../TransactionView/TransactionView";
 
+import { addTransactionToFirestore } from "../../firebase/firebase.utils";
+
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
@@ -79,7 +81,7 @@ class InputRecord extends React.Component {
       //   from: account
       // })
       .send({ from: account })
-      .then(res => {
+      .then(async res => {
         console.log(res);
         const { transactionHash } = res;
         componentThis.setState({
@@ -89,21 +91,39 @@ class InputRecord extends React.Component {
           stepCount: myCount + 1,
           stepMessage: "Done"
         });
-        setTimeout(() => {
-          componentThis.screenReset();
-        }, 4000);
+        try {
+          const arrIndex = await getLength().call({
+            from: account
+          });
+          await addTransactionToFirestore(transactionHash, {
+            ...res
+          });
+        } catch (error) {
+          console.error(error);
+          this.showError(error.message);
+          setTimeout(() => {
+            componentThis.screenReset();
+          }, 4000);
+        }
       })
       .catch(error => {
-        componentThis.setState({
-          transactionScreen: false,
-          open: true,
-          message: `Error Occured \n ${error.message}`,
-          severity: "error"
-        });
+        this.showError(error.message);
         setTimeout(() => {
           componentThis.screenReset();
         }, 4000);
       });
+  };
+
+  showError = errorMessage => {
+    const componentThis = this;
+    setTimeout(() => {
+      componentThis.setState({
+        transactionScreen: false,
+        open: true,
+        message: errorMessage,
+        severity: "error"
+      });
+    }, 4000);
   };
 
   screenReset = () => {

@@ -51,7 +51,6 @@ class App extends Component {
     const arrIndex = await getLength().call();
     console.log("Arr index ", arrIndex);
     console.log("data from arr ", await landArr(0).call());
-    
   };
 
   render() {

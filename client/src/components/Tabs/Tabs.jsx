@@ -10,6 +10,7 @@ import Box from "@material-ui/core/Box";
 
 import InputRecord from "../InputRecord/InputRecord";
 import ReadRecord from "../ReadRecord/ReadRecord";
+import TransferRecord from "../TransferRecord/TransferRecord";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -95,7 +96,10 @@ export default function NavTabs(props) {
         />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Transfer Land
+        <TransferRecord
+          land_contract={props.land_contract}
+          account={props.account}
+        />
       </TabPanel>
     </div>
   );

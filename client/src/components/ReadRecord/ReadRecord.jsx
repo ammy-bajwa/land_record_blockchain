@@ -4,11 +4,11 @@ import {
   Snackbar,
   TextField,
   Button,
-  withStyles,
-  Backdrop
+  withStyles
 } from "@material-ui/core";
 import MuiAlert from "@material-ui/lab/Alert";
 
+import DataTable from "../DataTable/DataTable";
 import Loading from "../Loading/Loading";
 
 import { getTransactionFromFirestore } from "../../firebase/firebase.utils";
@@ -37,6 +37,7 @@ class ReadRecord extends React.Component {
   constructor() {
     super();
     this.state = {
+      data: [],
       open: false,
       message: "",
       severity: "",
@@ -48,11 +49,53 @@ class ReadRecord extends React.Component {
     event.preventDefault();
     const { land_contract, account } = this.props;
     const componentThis = this;
-    const transactionHash = document.querySelector("#transactionHash").value;
+    const userTransactionHash = document.querySelector("#transactionHash")
+      .value;
     this.setState({
       loadingScreen: true
     });
-    const transactionData = await getTransactionFromFirestore(transactionHash);
+    const transactionData = await getTransactionFromFirestore(
+      userTransactionHash
+    );
+    const {
+      blockHash,
+      blockNumber,
+      from,
+      gasUsed,
+      to,
+      transactionHash
+    } = transactionData;
+
+    const data = [
+      {
+        title: "Block Hash",
+        details: blockHash
+      },
+      {
+        title: "Block Number",
+        details: blockNumber
+      },
+      {
+        title: "From",
+        details: from
+      },
+      {
+        title: "Gas Used",
+        details: gasUsed
+      },
+      {
+        title: "To",
+        details: to
+      },
+      {
+        title: "Transaction Hash",
+        details: transactionHash
+      }
+    ];
+    this.setState({
+      data,
+      loadingScreen: false
+    });
   };
 
   showError = errorMessage => {
@@ -77,33 +120,36 @@ class ReadRecord extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const { open, message, severity, loadingScreen } = this.state;
+    const { data, open, message, severity, loadingScreen } = this.state;
     return (
-      <form
-        className={classes.root}
-        autoComplete="off"
-        onSubmit={this.handleForm}
-        id="read_record_form"
-      >
-        <Grid container direction="row" justify="center" alignItems="center">
-          <TextField id="transactionHash" required label="Transaction Hash" />
-        </Grid>
-        <Grid
-          container
-          direction="row"
-          justify="center"
-          alignItems="center"
-          className={classes.submitButton}
+      <div>
+        <form
+          className={classes.root}
+          autoComplete="off"
+          onSubmit={this.handleForm}
+          id="read_record_form"
         >
-          <Button type="submit" variant="contained" color="primary">
-            Get Data
-          </Button>
-        </Grid>
-        <Loading loading={loadingScreen} />
-        <Snackbar open={open}>
-          <Alert severity={severity}>{message}</Alert>
-        </Snackbar>
-      </form>
+          <Grid container direction="row" justify="center" alignItems="center">
+            <TextField id="transactionHash" required label="Transaction Hash" />
+          </Grid>
+          <Grid
+            container
+            direction="row"
+            justify="center"
+            alignItems="center"
+            className={classes.submitButton}
+          >
+            <Button type="submit" variant="contained" color="primary">
+              Get Data
+            </Button>
+          </Grid>
+          <Loading loading={loadingScreen} />
+          <Snackbar open={open}>
+            <Alert severity={severity}>{message}</Alert>
+          </Snackbar>
+        </form>
+        <DataTable data={data} />
+      </div>
     );
   }
 }
@@ -112,7 +158,7 @@ export default withStyles(styles)(ReadRecord);
 
 {
   /* <Alert severity="error">This is an error message!</Alert>
-<Alert severity="warning">This is a warning message!</Alert>
+  <Alert severity="warning">This is a warning message!</Alert>
 <Alert severity="info">This is an information message!</Alert>
 <Alert severity="success">This is a success message!</Alert> */
 }

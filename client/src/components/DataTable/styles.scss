@@ -1,0 +1,17 @@
+.detailWrapper {
+  align-items: center;
+  border-bottom: 1px solid;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  margin-top: 15px;
+  justify-content: center;
+  width: 100%;
+  word-break: break-all;
+}
+
+.transactionDetailsTitle {
+  color: #3f51b5;
+  font-weight: 600;
+  font-size: 18px;
+}

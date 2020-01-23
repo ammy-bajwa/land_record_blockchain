@@ -32,15 +32,15 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.12+commit.7709ece9\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"get\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"x\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/home/amir/Documents/Development_Work/Blockchain/land_record/contracts/SimpleStorage.sol\":\"SimpleStorage\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/home/amir/Documents/Development_Work/Blockchain/land_record/contracts/SimpleStorage.sol\":{\"keccak256\":\"0xc2159b9be968451f2fc7620e38577dd35ed99a13286085d788139b7ce1ce3fc1\",\"urls\":[\"bzz-raw://30392edeac20a70916dbb100fff759575930c2105465b289a88b684d32707947\",\"dweb:/ipfs/QmZAM17Wb2sN4Ew7DF9ZbxEBmFpUoEubH3RKJGaTHWheJK\"]}},\"version\":1}",
-  "bytecode": "0x608060405234801561001057600080fd5b5060c68061001f6000396000f3fe6080604052348015600f57600080fd5b506004361060325760003560e01c806360fe47b11460375780636d4ce63c146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea265627a7a7231582094e63f86bdf57c9f7e20a5965f162c643624acf389af4048cbefb010c959ce7564736f6c634300050c0032",
-  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060325760003560e01c806360fe47b11460375780636d4ce63c146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea265627a7a7231582094e63f86bdf57c9f7e20a5965f162c643624acf389af4048cbefb010c959ce7564736f6c634300050c0032",
-  "sourceMap": "34:176:2:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;34:176:2;;;;;;;",
-  "deployedSourceMap": "34:176:2:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;34:176:2;;;;;;;;;;;;;;;;;;;;;;;;81:53;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;81:53:2;;;;;;;;;;;;;;;;;:::i;:::-;;138:70;;;:::i;:::-;;;;;;;;;;;;;;;;;;;81:53;128:1;115:10;:14;;;;81:53;:::o;138:70::-;174:4;193:10;;186:17;;138:70;:::o",
-  "source": "pragma solidity >=0.4.21 <0.7.0;\n\ncontract SimpleStorage {\n  uint storedData;\n\n  function set(uint x) public {\n    storedData = x;\n  }\n\n  function get() public view returns (uint) {\n    return storedData;\n  }\n}\n",
-  "sourcePath": "/home/amir/Documents/Development_Work/Blockchain/land_record/contracts/SimpleStorage.sol",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"get\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"x\",\"type\":\"uint256\"}],\"name\":\"set\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/Users/AMIRS/Documents/GitHub/land_record_blockchain/contracts/SimpleStorage.sol\":\"SimpleStorage\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/AMIRS/Documents/GitHub/land_record_blockchain/contracts/SimpleStorage.sol\":{\"keccak256\":\"0xed591b4d1ab90bdaa58399e7319ac78a0d6f447d30ed48b7e2bd653fc700d481\",\"urls\":[\"bzz-raw://889d69e2b1eb6a6cb03d21d76e3bd42106f108d42f986a1c1f0363b81db7aa4d\",\"dweb:/ipfs/QmapauWUJpN7cVhMhJiTVPVDa48aNcLZYLSEJDxvmRwhHC\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5060c68061001f6000396000f3fe6080604052348015600f57600080fd5b506004361060325760003560e01c806360fe47b11460375780636d4ce63c146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea265627a7a72315820e1169ed7d665c10192971cccc284b3cecab598a303ef518d5f9f5b899583e82e64736f6c63430005100032",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060325760003560e01c806360fe47b11460375780636d4ce63c146062575b600080fd5b606060048036036020811015604b57600080fd5b8101908080359060200190929190505050607e565b005b60686088565b6040518082815260200191505060405180910390f35b8060008190555050565b6000805490509056fea265627a7a72315820e1169ed7d665c10192971cccc284b3cecab598a303ef518d5f9f5b899583e82e64736f6c63430005100032",
+  "sourceMap": "36:186:2:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;36:186:2;;;;;;;",
+  "deployedSourceMap": "36:186:2:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;36:186:2;;;;;;;;;;;;;;;;;;;;;;;;86:55;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;86:55:2;;;;;;;;;;;;;;;;;:::i;:::-;;147:72;;;:::i;:::-;;;;;;;;;;;;;;;;;;;86:55;134:1;121:10;:14;;;;86:55;:::o;147:72::-;183:4;203:10;;196:17;;147:72;:::o",
+  "source": "pragma solidity >=0.4.21 <0.7.0;\r\n\r\ncontract SimpleStorage {\r\n  uint storedData;\r\n\r\n  function set(uint x) public {\r\n    storedData = x;\r\n  }\r\n\r\n  function get() public view returns (uint) {\r\n    return storedData;\r\n  }\r\n}\r\n",
+  "sourcePath": "C:/Users/AMIRS/Documents/GitHub/land_record_blockchain/contracts/SimpleStorage.sol",
   "ast": {
-    "absolutePath": "/home/amir/Documents/Development_Work/Blockchain/land_record/contracts/SimpleStorage.sol",
+    "absolutePath": "/C/Users/AMIRS/Documents/GitHub/land_record_blockchain/contracts/SimpleStorage.sol",
     "exportedSymbols": {
       "SimpleStorage": [
         156
@@ -82,7 +82,7 @@
             "name": "storedData",
             "nodeType": "VariableDeclaration",
             "scope": 156,
-            "src": "61:15:2",
+            "src": "64:15:2",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -93,7 +93,7 @@
               "id": 136,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "61:4:2",
+              "src": "64:4:2",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -106,7 +106,7 @@
             "body": {
               "id": 146,
               "nodeType": "Block",
-              "src": "109:25:2",
+              "src": "114:27:2",
               "statements": [
                 {
                   "expression": {
@@ -123,7 +123,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 137,
-                      "src": "115:10:2",
+                      "src": "121:10:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -138,13 +138,13 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 139,
-                      "src": "128:1:2",
+                      "src": "134:1:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "115:14:2",
+                    "src": "121:14:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -152,7 +152,7 @@
                   },
                   "id": 145,
                   "nodeType": "ExpressionStatement",
-                  "src": "115:14:2"
+                  "src": "121:14:2"
                 }
               ]
             },
@@ -173,7 +173,7 @@
                   "name": "x",
                   "nodeType": "VariableDeclaration",
                   "scope": 147,
-                  "src": "94:6:2",
+                  "src": "99:6:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -184,7 +184,7 @@
                     "id": 138,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "94:4:2",
+                    "src": "99:4:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -194,16 +194,16 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "93:8:2"
+              "src": "98:8:2"
             },
             "returnParameters": {
               "id": 141,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "109:0:2"
+              "src": "114:0:2"
             },
             "scope": 156,
-            "src": "81:53:2",
+            "src": "86:55:2",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
@@ -212,7 +212,7 @@
             "body": {
               "id": 154,
               "nodeType": "Block",
-              "src": "180:28:2",
+              "src": "189:30:2",
               "statements": [
                 {
                   "expression": {
@@ -222,7 +222,7 @@
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
                     "referencedDeclaration": 137,
-                    "src": "193:10:2",
+                    "src": "203:10:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -231,7 +231,7 @@
                   "functionReturnParameters": 151,
                   "id": 153,
                   "nodeType": "Return",
-                  "src": "186:17:2"
+                  "src": "196:17:2"
                 }
               ]
             },
@@ -246,7 +246,7 @@
               "id": 148,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "150:2:2"
+              "src": "159:2:2"
             },
             "returnParameters": {
               "id": 151,
@@ -258,7 +258,7 @@
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "scope": 155,
-                  "src": "174:4:2",
+                  "src": "183:4:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -269,7 +269,7 @@
                     "id": 149,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "174:4:2",
+                    "src": "183:4:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -279,23 +279,23 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "173:6:2"
+              "src": "182:6:2"
             },
             "scope": 156,
-            "src": "138:70:2",
+            "src": "147:72:2",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
         "scope": 157,
-        "src": "34:176:2"
+        "src": "36:186:2"
       }
     ],
-    "src": "0:211:2"
+    "src": "0:224:2"
   },
   "legacyAST": {
-    "absolutePath": "/home/amir/Documents/Development_Work/Blockchain/land_record/contracts/SimpleStorage.sol",
+    "absolutePath": "/C/Users/AMIRS/Documents/GitHub/land_record_blockchain/contracts/SimpleStorage.sol",
     "exportedSymbols": {
       "SimpleStorage": [
         156
@@ -337,7 +337,7 @@
             "name": "storedData",
             "nodeType": "VariableDeclaration",
             "scope": 156,
-            "src": "61:15:2",
+            "src": "64:15:2",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -348,7 +348,7 @@
               "id": 136,
               "name": "uint",
               "nodeType": "ElementaryTypeName",
-              "src": "61:4:2",
+              "src": "64:4:2",
               "typeDescriptions": {
                 "typeIdentifier": "t_uint256",
                 "typeString": "uint256"
@@ -361,7 +361,7 @@
             "body": {
               "id": 146,
               "nodeType": "Block",
-              "src": "109:25:2",
+              "src": "114:27:2",
               "statements": [
                 {
                   "expression": {
@@ -378,7 +378,7 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 137,
-                      "src": "115:10:2",
+                      "src": "121:10:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -393,13 +393,13 @@
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
                       "referencedDeclaration": 139,
-                      "src": "128:1:2",
+                      "src": "134:1:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
-                    "src": "115:14:2",
+                    "src": "121:14:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -407,7 +407,7 @@
                   },
                   "id": 145,
                   "nodeType": "ExpressionStatement",
-                  "src": "115:14:2"
+                  "src": "121:14:2"
                 }
               ]
             },
@@ -428,7 +428,7 @@
                   "name": "x",
                   "nodeType": "VariableDeclaration",
                   "scope": 147,
-                  "src": "94:6:2",
+                  "src": "99:6:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -439,7 +439,7 @@
                     "id": 138,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "94:4:2",
+                    "src": "99:4:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -449,16 +449,16 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "93:8:2"
+              "src": "98:8:2"
             },
             "returnParameters": {
               "id": 141,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "109:0:2"
+              "src": "114:0:2"
             },
             "scope": 156,
-            "src": "81:53:2",
+            "src": "86:55:2",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
@@ -467,7 +467,7 @@
             "body": {
               "id": 154,
               "nodeType": "Block",
-              "src": "180:28:2",
+              "src": "189:30:2",
               "statements": [
                 {
                   "expression": {
@@ -477,7 +477,7 @@
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
                     "referencedDeclaration": 137,
-                    "src": "193:10:2",
+                    "src": "203:10:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -486,7 +486,7 @@
                   "functionReturnParameters": 151,
                   "id": 153,
                   "nodeType": "Return",
-                  "src": "186:17:2"
+                  "src": "196:17:2"
                 }
               ]
             },
@@ -501,7 +501,7 @@
               "id": 148,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "150:2:2"
+              "src": "159:2:2"
             },
             "returnParameters": {
               "id": 151,
@@ -513,7 +513,7 @@
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "scope": 155,
-                  "src": "174:4:2",
+                  "src": "183:4:2",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -524,7 +524,7 @@
                     "id": 149,
                     "name": "uint",
                     "nodeType": "ElementaryTypeName",
-                    "src": "174:4:2",
+                    "src": "183:4:2",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -534,35 +534,35 @@
                   "visibility": "internal"
                 }
               ],
-              "src": "173:6:2"
+              "src": "182:6:2"
             },
             "scope": 156,
-            "src": "138:70:2",
+            "src": "147:72:2",
             "stateMutability": "view",
             "superFunction": null,
             "visibility": "public"
           }
         ],
         "scope": 157,
-        "src": "34:176:2"
+        "src": "36:186:2"
       }
     ],
-    "src": "0:211:2"
+    "src": "0:224:2"
   },
   "compiler": {
     "name": "solc",
-    "version": "0.5.12+commit.7709ece9.Emscripten.clang"
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
   },
   "networks": {
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x599D78E0FE447cE0090bB299BE00873684787C2a",
-      "transactionHash": "0x97b47cc47bf5b2158db56992783e58e80f2c9cde836697a2299bc7efde85f767"
+      "address": "0xFB1CE61168bc5Fd8d5867fB4Db965D27d86c17fD",
+      "transactionHash": "0x4b85d575d17433a07b2e03246534984b7d0dd281049e263314439320b8007f1d"
     }
   },
-  "schemaVersion": "3.0.20",
-  "updatedAt": "2020-01-19T11:54:15.607Z",
+  "schemaVersion": "3.0.21",
+  "updatedAt": "2020-01-23T19:18:34.973Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}

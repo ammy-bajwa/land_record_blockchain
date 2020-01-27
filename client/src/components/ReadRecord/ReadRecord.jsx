@@ -47,7 +47,12 @@ class ReadRecord extends React.Component {
 
   handleForm = async event => {
     event.preventDefault();
-    const { land_contract, account } = this.props;
+    const {
+      land_contract: {
+        methods: { landArr }
+      },
+      account
+    } = this.props;
     const componentThis = this;
     const userTransactionHash = document.querySelector("#transactionHash")
       .value;
@@ -57,39 +62,64 @@ class ReadRecord extends React.Component {
     const transactionData = await getTransactionFromFirestore(
       userTransactionHash
     );
+    console.log("transactionData", transactionData);
     const {
       blockHash,
       blockNumber,
       from,
       gasUsed,
       to,
-      transactionHash
+      transactionHash,
+      arrIndex
     } = transactionData;
+
+    console.log(typeof parseInt(arrIndex));
+    const dataFromContract = await landArr(parseInt(arrIndex)).call({
+      from: account
+    });
+    console.log("dataFromContract", dataFromContract);
+    debugger;
+    const {
+      plot_num,
+      city,
+      country,
+      witness_1_id,
+      previous_owner,
+      current_owner
+    } = dataFromContract;
 
     const data = [
       {
-        title: "Block Hash",
-        details: blockHash
+        title: "Previous Owner",
+        details: previous_owner
       },
       {
-        title: "Block Number",
-        details: blockNumber
+        title: "Current Owner",
+        details: current_owner
       },
       {
-        title: "From",
+        title: "City",
+        details: city
+      },
+      {
+        title: "Plot Number",
+        details: plot_num
+      },
+      {
+        title: "Country",
+        details: country
+      },
+      {
+        title: "Witness Id",
+        details: witness_1_id
+      },
+      {
+        title: "Tx From",
         details: from
       },
       {
-        title: "Gas Used",
-        details: gasUsed
-      },
-      {
-        title: "To",
+        title: "Tx To",
         details: to
-      },
-      {
-        title: "Transaction Hash",
-        details: transactionHash
       }
     ];
     this.setState({

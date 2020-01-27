@@ -56,7 +56,7 @@ class InputRecord extends React.Component {
     const country = document.querySelector("#country").value;
     const previous_owner = document.querySelector("#previous_owner").value;
     const current_owner = document.querySelector("#current_owner").value;
-    const wintness_1_id = document.querySelector("#wintness_1_id").value;
+    const witness_1_id = document.querySelector("#witness_1_id").value;
     this.setState({
       transactionScreen: true,
       stepCount: myCount,
@@ -69,7 +69,7 @@ class InputRecord extends React.Component {
       plot_num,
       city,
       country,
-      wintness_1_id,
+      witness_1_id,
       previous_owner,
       current_owner
     )
@@ -170,7 +170,7 @@ class InputRecord extends React.Component {
           />
 
           <TextField
-            id="wintness_1_id"
+            id="witness_1_id"
             type="number"
             required
             label="Witness One Id"

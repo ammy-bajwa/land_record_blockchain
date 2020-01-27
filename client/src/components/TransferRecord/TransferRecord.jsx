@@ -68,7 +68,12 @@ class TransferRecord extends React.Component {
       methods: { getLength, addLandRecode, landArr, transferLandRecord }
     } = land_contract;
     const { arrIndex } = await getTransactionFromFirestore(userTransactionHash);
-    transferLandRecord(arrIndex, current_owner, new_owner, wintness_1_id)
+    transferLandRecord(
+      parseInt(arrIndex),
+      current_owner,
+      new_owner,
+      wintness_1_id
+    )
       .send({ from: account })
       .then(async res => {
         const { transactionHash } = res;
@@ -83,9 +88,10 @@ class TransferRecord extends React.Component {
           const arrIndex = await getLength().call({
             from: account
           });
+          console.log("arrIndex", arrIndex);
           await addTransactionToFirestore(transactionHash, {
             ...res,
-            arrIndex
+            arrIndex: arrIndex - 1
           });
         } catch (error) {
           console.error(error);

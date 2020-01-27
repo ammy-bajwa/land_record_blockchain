@@ -11,7 +11,10 @@ import MuiAlert from "@material-ui/lab/Alert";
 
 import TransactionView from "../TransactionView/TransactionView";
 
-import { addTransactionToFirestore } from "../../firebase/firebase.utils";
+import {
+  addTransactionToFirestore,
+  getTransactionFromFirestore
+} from "../../firebase/firebase.utils";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -46,37 +49,26 @@ class TransferRecord extends React.Component {
     };
   }
 
-  handleForm = event => {
+  handleForm = async event => {
     event.preventDefault();
     const { land_contract, account } = this.props;
     const componentThis = this;
     let myCount = 0;
-    const plot_num = document.querySelector("#plot_num").value;
-    const street_num = document.querySelector("#street_num").value;
-    const city = document.querySelector("#city").value;
-    const province = document.querySelector("#province").value;
-    const country = document.querySelector("#country").value;
-    const previous_owner = document.querySelector("#previous_owner").value;
+    const new_owner = document.querySelector("#new_owner").value;
+    const current_owner = document.querySelector("#current_owner").value;
+    const userTransactionHash = document.querySelector("#transaction_hash")
+      .value;
     const wintness_1_id = document.querySelector("#wintness_1_id").value;
-    const wintness_2_id = document.querySelector("#wintness_2_id").value;
     this.setState({
       transactionScreen: true,
       stepCount: myCount,
       stepMessage: "Working..."
     });
     const {
-      methods: { getLength, addLandRecode, landArr }
+      methods: { getLength, addLandRecode, landArr, transferLandRecord }
     } = land_contract;
-    addLandRecode(
-      plot_num,
-      street_num,
-      city,
-      province,
-      country,
-      previous_owner,
-      wintness_1_id,
-      wintness_2_id
-    )
+    const { arrIndex } = await getTransactionFromFirestore(userTransactionHash);
+    transferLandRecord(arrIndex, current_owner, new_owner, wintness_1_id)
       .send({ from: account })
       .then(async res => {
         const { transactionHash } = res;
@@ -153,11 +145,13 @@ class TransferRecord extends React.Component {
           <TransactionView stepCount={stepCount} stepMessage={stepMessage} />
         </Backdrop>
         <Grid container direction="row" justify="center" alignItems="center">
+          <TextField id="transaction_hash" required label="Transaction Hash" />
+
           <TextField
-            id="previous_owner"
+            id="current_owner"
             type="number"
             required
-            label="Previous Owner Id"
+            label="Current Owner Id"
           />
 
           <TextField
@@ -172,13 +166,6 @@ class TransferRecord extends React.Component {
             type="number"
             required
             label="Witness One Id"
-          />
-
-          <TextField
-            id="wintness_2_id"
-            type="number"
-            required
-            label="Witness Two Id"
           />
         </Grid>
         <Grid

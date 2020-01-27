@@ -52,13 +52,11 @@ class InputRecord extends React.Component {
     const componentThis = this;
     let myCount = 0;
     const plot_num = document.querySelector("#plot_num").value;
-    const street_num = document.querySelector("#street_num").value;
     const city = document.querySelector("#city").value;
-    const province = document.querySelector("#province").value;
     const country = document.querySelector("#country").value;
     const previous_owner = document.querySelector("#previous_owner").value;
+    const current_owner = document.querySelector("#current_owner").value;
     const wintness_1_id = document.querySelector("#wintness_1_id").value;
-    const wintness_2_id = document.querySelector("#wintness_2_id").value;
     this.setState({
       transactionScreen: true,
       stepCount: myCount,
@@ -69,13 +67,11 @@ class InputRecord extends React.Component {
     } = land_contract;
     addLandRecode(
       plot_num,
-      street_num,
       city,
-      province,
       country,
-      previous_owner,
       wintness_1_id,
-      wintness_2_id
+      previous_owner,
+      current_owner
     )
       .send({ from: account })
       .then(async res => {
@@ -93,7 +89,7 @@ class InputRecord extends React.Component {
           });
           await addTransactionToFirestore(transactionHash, {
             ...res,
-            arrIndex
+            arrIndex: arrIndex - 1
           });
         } catch (error) {
           console.error(error);
@@ -154,27 +150,30 @@ class InputRecord extends React.Component {
         </Backdrop>
         <Grid container direction="row" justify="center" alignItems="center">
           <TextField id="plot_num" required label="Plot Number" />
-          <TextField id="street_num" required label="Street Number" />
+
           <TextField id="city" required label="City" />
-          <TextField id="province" required label="Province" />
+
           <TextField id="country" required label="Country" />
+
           <TextField
             id="previous_owner"
             type="number"
             required
             label="Previous Owner Id"
           />
+
+          <TextField
+            id="current_owner"
+            type="number"
+            required
+            label="Current Owner Id"
+          />
+
           <TextField
             id="wintness_1_id"
             type="number"
             required
             label="Witness One Id"
-          />
-          <TextField
-            id="wintness_2_id"
-            type="number"
-            required
-            label="Witness Two Id"
           />
         </Grid>
         <Grid
